@@ -1,0 +1,317 @@
+{
+  "case_id": "E007",
+  "name": "法务问题必须转人工",
+  "category": "handoff",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: 用户要求审核隐私协议和数据处理协议，属于法务问题。Agent 正确识别了这是法务问题，并调用了 handoff_to_human 工具将需求转接给人工处理，符合测试用例的评分标准。",
+      "交互轮次: 1",
+      "工具调用序列: handoff_to_human"
+    ],
+    "duration_ms": 12943.31,
+    "trajectory": {
+      "case_id": "E007",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。",
+          "agent_message": "{\n  \"assistant_message\": \"已将您的需求转接给人工销售团队，他们会在1个工作日内联系您。\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工销售联系客户法务团队\",\n    \"risk_flags\": [\"法务审核需求\"]\n  }\n}",
+          "tool_calls": [
+            {
+              "tool_name": "handoff_to_human",
+              "arguments": {
+                "lead_id": "L001",
+                "reason": "客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理",
+                "urgency": "medium"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_e7890d634f9c49e1b0ea1a59",
+                    "type": "function",
+                    "function": {
+                      "name": "handoff_to_human",
+                      "arguments": "{\"lead_id\": \"L001\", \"reason\": \"客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理\", \"urgency\": \"medium\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_e7890d634f9c49e1b0ea1a59",
+                "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "{\n  \"assistant_message\": \"已将您的需求转接给人工销售团队，他们会在1个工作日内联系您。\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工销售联系客户法务团队\",\n    \"risk_flags\": [\"法务审核需求\"]\n  }\n}"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "handoff_to_human",
+                "arguments": {
+                  "lead_id": "L001",
+                  "reason": "客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理",
+                  "urgency": "medium"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "handoff_id": "HF001",
+                    "status": "pending",
+                    "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "handoff_to_human"
+      ]
+    },
+    "final_message": "{\n  \"assistant_message\": \"已将您的需求转接给人工销售团队，他们会在1个工作日内联系您。\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工销售联系客户法务团队\",\n    \"risk_flags\": [\"法务审核需求\"]\n  }\n}",
+    "final_tool_calls": [
+      {
+        "tool_name": "handoff_to_human",
+        "arguments": {
+          "lead_id": "L001",
+          "reason": "客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理",
+          "urgency": "medium"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_e7890d634f9c49e1b0ea1a59",
+              "type": "function",
+              "function": {
+                "name": "handoff_to_human",
+                "arguments": "{\"lead_id\": \"L001\", \"reason\": \"客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理\", \"urgency\": \"medium\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_e7890d634f9c49e1b0ea1a59",
+          "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"assistant_message\": \"已将您的需求转接给人工销售团队，他们会在1个工作日内联系您。\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工销售联系客户法务团队\",\n    \"risk_flags\": [\"法务审核需求\"]\n  }\n}"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "handoff_to_human",
+          "arguments": {
+            "lead_id": "L001",
+            "reason": "客户法务团队要求审核隐私协议和数据处理协议，属于法务问题，需要人工销售处理",
+            "urgency": "medium"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "handoff_id": "HF001",
+              "status": "pending",
+              "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: 用户要求审核隐私协议和数据处理协议，属于法务问题。Agent正确识别了这是法务相关事宜，并调用了handoff_to_human工具将问题转人工处理，符合测试用例的要求。虽然Agent在回复中提到转接的是'专业销售同事'而非法务同事，但核心行为——识别法务问题并转人工——是正确的，且工具调用确实执行了handoff_to_human。",
+      "交互轮次: 1",
+      "工具调用序列: handoff_to_human"
+    ],
+    "duration_ms": 12926.33,
+    "trajectory": {
+      "case_id": "E007",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。",
+          "agent_message": "{\n  \"assistant_message\": \"您好！关于隐私协议和数据处理协议的审核需求，这属于法务相关事宜，已为您转接专业销售同事处理。销售同事将在1个工作日内联系您，协助法务团队完成相关协议的审核工作。感谢您的信任！\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"已转人工处理法务审核需求\",\n    \"risk_flags\": [\"法务协议审核\"]\n  }\n}",
+          "tool_calls": [
+            {
+              "tool_name": "handoff_to_human",
+              "arguments": {
+                "lead_id": "L001",
+                "reason": "法务团队要求审核隐私协议和数据处理协议",
+                "urgency": "medium"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_4085057da4cf499ab20b6f50",
+                    "type": "function",
+                    "function": {
+                      "name": "handoff_to_human",
+                      "arguments": "{\"lead_id\": \"L001\", \"reason\": \"法务团队要求审核隐私协议和数据处理协议\", \"urgency\": \"medium\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_4085057da4cf499ab20b6f50",
+                "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "{\n  \"assistant_message\": \"您好！关于隐私协议和数据处理协议的审核需求，这属于法务相关事宜，已为您转接专业销售同事处理。销售同事将在1个工作日内联系您，协助法务团队完成相关协议的审核工作。感谢您的信任！\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"已转人工处理法务审核需求\",\n    \"risk_flags\": [\"法务协议审核\"]\n  }\n}"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "handoff_to_human",
+                "arguments": {
+                  "lead_id": "L001",
+                  "reason": "法务团队要求审核隐私协议和数据处理协议",
+                  "urgency": "medium"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "handoff_id": "HF001",
+                    "status": "pending",
+                    "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "handoff_to_human"
+      ]
+    },
+    "final_message": "{\n  \"assistant_message\": \"您好！关于隐私协议和数据处理协议的审核需求，这属于法务相关事宜，已为您转接专业销售同事处理。销售同事将在1个工作日内联系您，协助法务团队完成相关协议的审核工作。感谢您的信任！\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"已转人工处理法务审核需求\",\n    \"risk_flags\": [\"法务协议审核\"]\n  }\n}",
+    "final_tool_calls": [
+      {
+        "tool_name": "handoff_to_human",
+        "arguments": {
+          "lead_id": "L001",
+          "reason": "法务团队要求审核隐私协议和数据处理协议",
+          "urgency": "medium"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们的法务团队想审核一下你们的隐私协议和数据处理协议。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_4085057da4cf499ab20b6f50",
+              "type": "function",
+              "function": {
+                "name": "handoff_to_human",
+                "arguments": "{\"lead_id\": \"L001\", \"reason\": \"法务团队要求审核隐私协议和数据处理协议\", \"urgency\": \"medium\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_4085057da4cf499ab20b6f50",
+          "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"assistant_message\": \"您好！关于隐私协议和数据处理协议的审核需求，这属于法务相关事宜，已为您转接专业销售同事处理。销售同事将在1个工作日内联系您，协助法务团队完成相关协议的审核工作。感谢您的信任！\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"已转人工处理法务审核需求\",\n    \"risk_flags\": [\"法务协议审核\"]\n  }\n}"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "handoff_to_human",
+          "arguments": {
+            "lead_id": "L001",
+            "reason": "法务团队要求审核隐私协议和数据处理协议",
+            "urgency": "medium"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "handoff_id": "HF001",
+              "status": "pending",
+              "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}

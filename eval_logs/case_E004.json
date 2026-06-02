@@ -1,0 +1,349 @@
+{
+  "case_id": "E004",
+  "name": "系统预加载档案后 Agent 应知晓客户背景",
+  "category": "tool_correctness",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: Agent在回复中明确提及了公司名称'华锐制造'、公司规模'300人'、行业'制造业'以及痛点'销售跟进不及时和经常漏掉客户的问题'，完全符合测试要求，体现了对客户背景的了解，且没有询问已知信息，语义正确合理。",
+      "交互轮次: 1",
+      "工具调用序列: get_lead_context"
+    ],
+    "duration_ms": 11531.81,
+    "trajectory": {
+      "case_id": "E004",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你好。",
+          "agent_message": "您好！我是AI销售助手，很高兴为您服务。我看到您是华锐制造的代表，贵公司有300人规模，属于制造业。\n\n了解到贵公司目前面临销售跟进不及时和经常漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n请问您今天想了解什么？我可以帮您：\n- 了解我们的产品如何解决销售管理问题\n- 预约产品演示\n- 获取更多产品信息\n- 其他销售相关咨询\n\n请问有什么我可以帮您的吗？",
+          "tool_calls": [
+            {
+              "tool_name": "get_lead_context",
+              "arguments": {
+                "lead_id": "L001"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你好。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_c048f1f763bc440c9b25710f",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_c048f1f763bc440c9b25710f",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！我是AI销售助手，很高兴为您服务。我看到您是华锐制造的代表，贵公司有300人规模，属于制造业。\n\n了解到贵公司目前面临销售跟进不及时和经常漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n请问您今天想了解什么？我可以帮您：\n- 了解我们的产品如何解决销售管理问题\n- 预约产品演示\n- 获取更多产品信息\n- 其他销售相关咨询\n\n请问有什么我可以帮您的吗？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "get_lead_context",
+                "arguments": {
+                  "lead_id": "L001"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "lead_id": "L001",
+                    "company_name": "华锐制造",
+                    "size": "300人",
+                    "industry": "制造业",
+                    "known_pain_points": [
+                      "销售跟进不及时",
+                      "经常漏掉客户"
+                    ],
+                    "budget_range": null,
+                    "decision_maker": null,
+                    "stage": "初步接触",
+                    "collected_info": [
+                      "公司规模",
+                      "行业"
+                    ]
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "get_lead_context"
+      ]
+    },
+    "final_message": "您好！我是AI销售助手，很高兴为您服务。我看到您是华锐制造的代表，贵公司有300人规模，属于制造业。\n\n了解到贵公司目前面临销售跟进不及时和经常漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n请问您今天想了解什么？我可以帮您：\n- 了解我们的产品如何解决销售管理问题\n- 预约产品演示\n- 获取更多产品信息\n- 其他销售相关咨询\n\n请问有什么我可以帮您的吗？",
+    "final_tool_calls": [
+      {
+        "tool_name": "get_lead_context",
+        "arguments": {
+          "lead_id": "L001"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你好。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_c048f1f763bc440c9b25710f",
+              "type": "function",
+              "function": {
+                "name": "get_lead_context",
+                "arguments": "{\"lead_id\": \"L001\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_c048f1f763bc440c9b25710f",
+          "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！我是AI销售助手，很高兴为您服务。我看到您是华锐制造的代表，贵公司有300人规模，属于制造业。\n\n了解到贵公司目前面临销售跟进不及时和经常漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n请问您今天想了解什么？我可以帮您：\n- 了解我们的产品如何解决销售管理问题\n- 预约产品演示\n- 获取更多产品信息\n- 其他销售相关咨询\n\n请问有什么我可以帮您的吗？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "get_lead_context",
+          "arguments": {
+            "lead_id": "L001"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "lead_id": "L001",
+              "company_name": "华锐制造",
+              "size": "300人",
+              "industry": "制造业",
+              "known_pain_points": [
+                "销售跟进不及时",
+                "经常漏掉客户"
+              ],
+              "budget_range": null,
+              "decision_maker": null,
+              "stage": "初步接触",
+              "collected_info": [
+                "公司规模",
+                "行业"
+              ]
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: Agent在回复中明确提及了公司名称'华锐制造'，并准确提到了已知的痛点（销售跟进不及时、容易漏掉客户），体现了对客户背景的了解，且没有询问已知信息，符合测试要求。",
+      "交互轮次: 1",
+      "工具调用序列: get_lead_context"
+    ],
+    "duration_ms": 14442.63,
+    "trajectory": {
+      "case_id": "E004",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你好。",
+          "agent_message": "您好！我是您的专属销售顾问。看到您是华锐制造的朋友，我们之前了解到贵公司在销售跟进方面存在一些挑战，比如跟进不及时、容易漏掉客户等。\n\n请问今天有什么我可以帮您的吗？是想了解一下我们的产品如何解决这些问题，还是有其他具体需求？",
+          "tool_calls": [
+            {
+              "tool_name": "get_lead_context",
+              "arguments": {
+                "lead_id": "L001"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你好。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_b0f4301e264341f18712dbc4",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_b0f4301e264341f18712dbc4",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！我是您的专属销售顾问。看到您是华锐制造的朋友，我们之前了解到贵公司在销售跟进方面存在一些挑战，比如跟进不及时、容易漏掉客户等。\n\n请问今天有什么我可以帮您的吗？是想了解一下我们的产品如何解决这些问题，还是有其他具体需求？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "get_lead_context",
+                "arguments": {
+                  "lead_id": "L001"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "lead_id": "L001",
+                    "company_name": "华锐制造",
+                    "size": "300人",
+                    "industry": "制造业",
+                    "known_pain_points": [
+                      "销售跟进不及时",
+                      "经常漏掉客户"
+                    ],
+                    "budget_range": null,
+                    "decision_maker": null,
+                    "stage": "初步接触",
+                    "collected_info": [
+                      "公司规模",
+                      "行业"
+                    ]
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "get_lead_context"
+      ]
+    },
+    "final_message": "您好！我是您的专属销售顾问。看到您是华锐制造的朋友，我们之前了解到贵公司在销售跟进方面存在一些挑战，比如跟进不及时、容易漏掉客户等。\n\n请问今天有什么我可以帮您的吗？是想了解一下我们的产品如何解决这些问题，还是有其他具体需求？",
+    "final_tool_calls": [
+      {
+        "tool_name": "get_lead_context",
+        "arguments": {
+          "lead_id": "L001"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你好。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_b0f4301e264341f18712dbc4",
+              "type": "function",
+              "function": {
+                "name": "get_lead_context",
+                "arguments": "{\"lead_id\": \"L001\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_b0f4301e264341f18712dbc4",
+          "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！我是您的专属销售顾问。看到您是华锐制造的朋友，我们之前了解到贵公司在销售跟进方面存在一些挑战，比如跟进不及时、容易漏掉客户等。\n\n请问今天有什么我可以帮您的吗？是想了解一下我们的产品如何解决这些问题，还是有其他具体需求？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "get_lead_context",
+          "arguments": {
+            "lead_id": "L001"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "lead_id": "L001",
+              "company_name": "华锐制造",
+              "size": "300人",
+              "industry": "制造业",
+              "known_pain_points": [
+                "销售跟进不及时",
+                "经常漏掉客户"
+              ],
+              "budget_range": null,
+              "decision_maker": null,
+              "stage": "初步接触",
+              "collected_info": [
+                "公司规模",
+                "行业"
+              ]
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}

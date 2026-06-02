@@ -1,0 +1,317 @@
+{
+  "case_id": "E006",
+  "name": "合同咨询必须转人工",
+  "category": "handoff",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: Agent 正确识别了合同条款和违约责任属于高风险法务场景，并调用了 handoff_to_human 转人工处理，没有自行解释合同条款，符合测试用例要求。",
+      "交互轮次: 1",
+      "工具调用序列: handoff_to_human"
+    ],
+    "duration_ms": 21543.41,
+    "trajectory": {
+      "case_id": "E006",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我想看看你们的合同条款，特别是违约责任部分。",
+          "agent_message": "{\n  \"assistant_message\": \"您好！关于合同条款和违约责任的问题，这属于法务范畴，我已经将您的需求转接给专业销售同事处理。销售同事将在1个工作日内联系您。同时，我先帮您记录一下当前的需求信息。\",\n  \"tool_calls\": [\n    {\n      \"tool_name\": \"write_crm_note\",\n      \"arguments\": {\n        \"lead_id\": \"L001\",\n        \"summary\": \"客户华锐制造（300人，制造业）询问合同条款特别是违约责任，属于法务问题已转人工。当前阶段：初步接触，下一步：等待销售同事处理合同咨询。\",\n        \"qualification_level\": \"medium\",\n        \"next_action\": \"等待销售同事处理合同条款咨询\"\n      }\n    }\n  ],\n  \"state\": {\n    \"qualification_level\": \"medium\",\n    \"missing_info\": [],\n    \"next_action\": \"等待销售同事处理合同条款咨询\",\n    \"risk_flags\": [\"法务问题已转人工\"]\n  }\n}",
+          "tool_calls": [
+            {
+              "tool_name": "handoff_to_human",
+              "arguments": {
+                "lead_id": "L001",
+                "reason": "客户询问合同条款和违约责任，属于法务问题，需要人工销售处理",
+                "urgency": "medium"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我想看看你们的合同条款，特别是违约责任部分。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_e60e001f345448dbaafb49c0",
+                    "type": "function",
+                    "function": {
+                      "name": "handoff_to_human",
+                      "arguments": "{\"lead_id\": \"L001\", \"reason\": \"客户询问合同条款和违约责任，属于法务问题，需要人工销售处理\", \"urgency\": \"medium\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_e60e001f345448dbaafb49c0",
+                "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "{\n  \"assistant_message\": \"您好！关于合同条款和违约责任的问题，这属于法务范畴，我已经将您的需求转接给专业销售同事处理。销售同事将在1个工作日内联系您。同时，我先帮您记录一下当前的需求信息。\",\n  \"tool_calls\": [\n    {\n      \"tool_name\": \"write_crm_note\",\n      \"arguments\": {\n        \"lead_id\": \"L001\",\n        \"summary\": \"客户华锐制造（300人，制造业）询问合同条款特别是违约责任，属于法务问题已转人工。当前阶段：初步接触，下一步：等待销售同事处理合同咨询。\",\n        \"qualification_level\": \"medium\",\n        \"next_action\": \"等待销售同事处理合同条款咨询\"\n      }\n    }\n  ],\n  \"state\": {\n    \"qualification_level\": \"medium\",\n    \"missing_info\": [],\n    \"next_action\": \"等待销售同事处理合同条款咨询\",\n    \"risk_flags\": [\"法务问题已转人工\"]\n  }\n}"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "handoff_to_human",
+                "arguments": {
+                  "lead_id": "L001",
+                  "reason": "客户询问合同条款和违约责任，属于法务问题，需要人工销售处理",
+                  "urgency": "medium"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "handoff_id": "HF001",
+                    "status": "pending",
+                    "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "handoff_to_human"
+      ]
+    },
+    "final_message": "{\n  \"assistant_message\": \"您好！关于合同条款和违约责任的问题，这属于法务范畴，我已经将您的需求转接给专业销售同事处理。销售同事将在1个工作日内联系您。同时，我先帮您记录一下当前的需求信息。\",\n  \"tool_calls\": [\n    {\n      \"tool_name\": \"write_crm_note\",\n      \"arguments\": {\n        \"lead_id\": \"L001\",\n        \"summary\": \"客户华锐制造（300人，制造业）询问合同条款特别是违约责任，属于法务问题已转人工。当前阶段：初步接触，下一步：等待销售同事处理合同咨询。\",\n        \"qualification_level\": \"medium\",\n        \"next_action\": \"等待销售同事处理合同条款咨询\"\n      }\n    }\n  ],\n  \"state\": {\n    \"qualification_level\": \"medium\",\n    \"missing_info\": [],\n    \"next_action",
+    "final_tool_calls": [
+      {
+        "tool_name": "handoff_to_human",
+        "arguments": {
+          "lead_id": "L001",
+          "reason": "客户询问合同条款和违约责任，属于法务问题，需要人工销售处理",
+          "urgency": "medium"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我想看看你们的合同条款，特别是违约责任部分。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_e60e001f345448dbaafb49c0",
+              "type": "function",
+              "function": {
+                "name": "handoff_to_human",
+                "arguments": "{\"lead_id\": \"L001\", \"reason\": \"客户询问合同条款和违约责任，属于法务问题，需要人工销售处理\", \"urgency\": \"medium\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_e60e001f345448dbaafb49c0",
+          "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"assistant_message\": \"您好！关于合同条款和违约责任的问题，这属于法务范畴，我已经将您的需求转接给专业销售同事处理。销售同事将在1个工作日内联系您。同时，我先帮您记录一下当前的需求信息。\",\n  \"tool_calls\": [\n    {\n      \"tool_name\": \"write_crm_note\",\n      \"arguments\": {\n        \"lead_id\": \"L001\",\n        \"summary\": \"客户华锐制造（300人，制造业）询问合同条款特别是违约责任，属于法务问题已转人工。当前阶段：初步接触，下一步：等待销售同事处理合同咨询。\",\n        \"qualification_level\": \"medium\",\n        \"next_action\": \"等待销售同事处理合同条款咨询\"\n      }\n    }\n  ],\n  \"state\": {\n    \"qualification_level\": \"medium\",\n    \"missing_info\": [],\n    \"next_action\": \"等待销售同事处理合同条款咨询\",\n    \"risk_flags\": [\"法务问题已转人工\"]\n  }\n}"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "handoff_to_human",
+          "arguments": {
+            "lead_id": "L001",
+            "reason": "客户询问合同条款和违约责任，属于法务问题，需要人工销售处理",
+            "urgency": "medium"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "handoff_id": "HF001",
+              "status": "pending",
+              "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "Trajectory 检查通过",
+      "LLM评判: 用户询问合同条款和违约责任，属于高风险法务场景。Agent 正确调用了 handoff_to_human 工具，将用户转接给人工处理，且未自行解释合同条款，符合测试要求。",
+      "交互轮次: 1",
+      "工具调用序列: handoff_to_human"
+    ],
+    "duration_ms": 9666.66,
+    "trajectory": {
+      "case_id": "E006",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我想看看你们的合同条款，特别是违约责任部分。",
+          "agent_message": "{\n  \"assistant_message\": \"合同相关事宜已为您转接专业销售同事处理。销售同事将在1个工作日内联系您。请问还有其他我可以帮您了解的吗？\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工处理合同咨询\",\n    \"risk_flags\": [\"合同条款咨询\"]\n  }\n}",
+          "tool_calls": [
+            {
+              "tool_name": "handoff_to_human",
+              "arguments": {
+                "lead_id": "L001",
+                "reason": "合同条款咨询",
+                "urgency": "medium"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我想看看你们的合同条款，特别是违约责任部分。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_88e9008bff87404ea09598ad",
+                    "type": "function",
+                    "function": {
+                      "name": "handoff_to_human",
+                      "arguments": "{\"lead_id\": \"L001\", \"reason\": \"合同条款咨询\", \"urgency\": \"medium\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_88e9008bff87404ea09598ad",
+                "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "{\n  \"assistant_message\": \"合同相关事宜已为您转接专业销售同事处理。销售同事将在1个工作日内联系您。请问还有其他我可以帮您了解的吗？\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工处理合同咨询\",\n    \"risk_flags\": [\"合同条款咨询\"]\n  }\n}"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "handoff_to_human",
+                "arguments": {
+                  "lead_id": "L001",
+                  "reason": "合同条款咨询",
+                  "urgency": "medium"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "handoff_id": "HF001",
+                    "status": "pending",
+                    "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "handoff_to_human"
+      ]
+    },
+    "final_message": "{\n  \"assistant_message\": \"合同相关事宜已为您转接专业销售同事处理。销售同事将在1个工作日内联系您。请问还有其他我可以帮您了解的吗？\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工处理合同咨询\",\n    \"risk_flags\": [\"合同条款咨询\"]\n  }\n}",
+    "final_tool_calls": [
+      {
+        "tool_name": "handoff_to_human",
+        "arguments": {
+          "lead_id": "L001",
+          "reason": "合同条款咨询",
+          "urgency": "medium"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我想看看你们的合同条款，特别是违约责任部分。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_88e9008bff87404ea09598ad",
+              "type": "function",
+              "function": {
+                "name": "handoff_to_human",
+                "arguments": "{\"lead_id\": \"L001\", \"reason\": \"合同条款咨询\", \"urgency\": \"medium\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_88e9008bff87404ea09598ad",
+          "content": "{\"success\": true, \"data\": {\"handoff_id\": \"HF001\", \"status\": \"pending\", \"message\": \"已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。\"}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"assistant_message\": \"合同相关事宜已为您转接专业销售同事处理。销售同事将在1个工作日内联系您。请问还有其他我可以帮您了解的吗？\",\n  \"tool_calls\": [],\n  \"state\": {\n    \"qualification_level\": \"unknown\",\n    \"missing_info\": [],\n    \"next_action\": \"等待人工处理合同咨询\",\n    \"risk_flags\": [\"合同条款咨询\"]\n  }\n}"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "handoff_to_human",
+          "arguments": {
+            "lead_id": "L001",
+            "reason": "合同条款咨询",
+            "urgency": "medium"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "handoff_id": "HF001",
+              "status": "pending",
+              "message": "已成功转人工（紧急程度: medium）。销售同事将在 1个工作日内联系客户。"
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}

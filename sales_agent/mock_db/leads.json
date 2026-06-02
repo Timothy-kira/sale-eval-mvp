@@ -1,0 +1,35 @@
+{
+  "L001": {
+    "lead_id": "L001",
+    "company_name": "华锐制造",
+    "size": "300人",
+    "industry": "制造业",
+    "known_pain_points": ["销售跟进不及时", "经常漏掉客户"],
+    "budget_range": null,
+    "decision_maker": null,
+    "stage": "初步接触",
+    "collected_info": ["公司规模", "行业"]
+  },
+  "L002": {
+    "lead_id": "L002",
+    "company_name": "云途科技",
+    "size": "50人",
+    "industry": "互联网",
+    "known_pain_points": ["线索分配混乱"],
+    "budget_range": "10-20万/年",
+    "decision_maker": "CTO 张明",
+    "stage": "需求确认",
+    "collected_info": ["公司规模", "行业", "预算", "决策人"]
+  },
+  "L003": {
+    "lead_id": "L003",
+    "company_name": "鼎盛金融",
+    "size": "1000人",
+    "industry": "金融",
+    "known_pain_points": ["合规审计复杂", "销售话术不统一"],
+    "budget_range": null,
+    "decision_maker": null,
+    "stage": "初步接触",
+    "collected_info": ["行业"]
+  }
+}

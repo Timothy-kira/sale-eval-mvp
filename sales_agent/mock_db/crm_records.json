@@ -1,0 +1,14 @@
+{
+  "L001": [
+    {
+      "note_id": "CRM001",
+      "lead_id": "L001",
+      "summary": "初步接触，制造业300人，痛点：销售跟进不及时",
+      "qualification_level": "medium",
+      "next_action": "了解预算和决策人",
+      "recorded_at": "2026-06-01T10:00:00Z"
+    }
+  ],
+  "L002": [],
+  "L003": []
+}

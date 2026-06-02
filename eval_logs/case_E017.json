@@ -1,0 +1,609 @@
+{
+  "case_id": "E017",
+  "name": "无预算时不应直接结束对话",
+  "category": "policy_compliance",
+  "prompt_v1": {
+    "score": 0.0,
+    "details": [
+      "LLM评判: 用户明确表示'还没定'预算，Agent不应继续追问预算范围。虽然Agent说'理解，很多客户在初期都是先了解情况'，但紧接着又再次追问预算范围，违反了'不应说没有预算就无法继续'的核心要求。Agent应继续挖掘需求、介绍产品价值，尝试推进到Demo预约，而不是反复追问预算。",
+      "Trajectory 检查通过",
+      "交互轮次: 2",
+      "工具调用序列: get_lead_context -> search_knowledge_base -> update_state"
+    ],
+    "duration_ms": 35511.94,
+    "trajectory": {
+      "case_id": "E017",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。",
+          "agent_message": "您好！我是小锐，很高兴为您服务。\n\n了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们服务类似制造企业的经验，这类问题通常可以通过AI销售助手有效解决。比如某大型制造企业使用后，销售跟进响应时间从4小时缩短到15分钟，线索转化率提升了32%。\n\n为了更好地帮助您，我想了解几个关键信息：\n\n1. **预算范围**：您大概的预算是多少？\n2. **决策人**：目前是谁在主导这个项目的决策？\n3. **当前阶段**：您目前处于调研阶段还是已经有明确的采购计划？\n\n这些信息能帮助我们为您推荐最合适的解决方案。",
+          "tool_calls": [
+            {
+              "tool_name": "get_lead_context",
+              "arguments": {
+                "lead_id": "L001"
+              }
+            },
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "销售跟进 线索管理 制造业 客户管理"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_3d42bbf09b8d40b7935e394e",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_3d42bbf09b8d40b7935e394e",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_ce754373d7ef4c0f83a015b9",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售跟进 线索管理 制造业 客户管理\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_ce754373d7ef4c0f83a015b9",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！我是小锐，很高兴为您服务。\n\n了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们服务类似制造企业的经验，这类问题通常可以通过AI销售助手有效解决。比如某大型制造企业使用后，销售跟进响应时间从4小时缩短到15分钟，线索转化率提升了32%。\n\n为了更好地帮助您，我想了解几个关键信息：\n\n1. **预算范围**：您大概的预算是多少？\n2. **决策人**：目前是谁在主导这个项目的决策？\n3. **当前阶段**：您目前处于调研阶段还是已经有明确的采购计划？\n\n这些信息能帮助我们为您推荐最合适的解决方案。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "get_lead_context",
+                "arguments": {
+                  "lead_id": "L001"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "lead_id": "L001",
+                    "company_name": "华锐制造",
+                    "size": "300人",
+                    "industry": "制造业",
+                    "known_pain_points": [
+                      "销售跟进不及时",
+                      "经常漏掉客户"
+                    ],
+                    "budget_range": null,
+                    "decision_maker": null,
+                    "stage": "初步接触",
+                    "collected_info": [
+                      "公司规模",
+                      "行业"
+                    ]
+                  },
+                  "error": null
+                }
+              },
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "销售跟进 线索管理 制造业 客户管理"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB006",
+                        "category": "客户案例",
+                        "title": "制造业案例",
+                        "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        },
+        {
+          "turn": 2,
+          "user_message": "还没定。",
+          "agent_message": "理解，很多客户在初期都是先了解情况。\n\n为了给您提供更精准的方案，能否简单了解一下：\n\n1. **预算范围**：您大概的预算是多少？比如是几万、十几万还是更高？\n2. **决策人**：目前是您个人在了解，还是需要和团队其他成员一起决策？\n3. **采购时间**：您希望什么时候开始使用？是近期就有计划，还是先做调研？\n\n这些信息能帮助我们为您准备更合适的资料和演示。如果方便的话，也可以告诉我您的邮箱，我可以先发送一些制造业相关的案例资料给您参考。",
+          "tool_calls": [
+            {
+              "tool_name": "update_state",
+              "arguments": {
+                "qualification_level": "medium",
+                "missing_info": [
+                  "预算范围",
+                  "决策人",
+                  "采购阶段"
+                ],
+                "next_action": "收集预算、决策人和采购阶段信息",
+                "risk_flags": []
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_3d42bbf09b8d40b7935e394e",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_3d42bbf09b8d40b7935e394e",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_ce754373d7ef4c0f83a015b9",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售跟进 线索管理 制造业 客户管理\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_ce754373d7ef4c0f83a015b9",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！我是小锐，很高兴为您服务。\n\n了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们服务类似制造企业的经验，这类问题通常可以通过AI销售助手有效解决。比如某大型制造企业使用后，销售跟进响应时间从4小时缩短到15分钟，线索转化率提升了32%。\n\n为了更好地帮助您，我想了解几个关键信息：\n\n1. **预算范围**：您大概的预算是多少？\n2. **决策人**：目前是谁在主导这个项目的决策？\n3. **当前阶段**：您目前处于调研阶段还是已经有明确的采购计划？\n\n这些信息能帮助我们为您推荐最合适的解决方案。"
+              },
+              {
+                "role": "user",
+                "content": "还没定。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_43190d095e914d398c531868",
+                    "type": "function",
+                    "function": {
+                      "name": "update_state",
+                      "arguments": "{\"qualification_level\": \"medium\", \"missing_info\": [\"预算范围\", \"决策人\", \"采购阶段\"], \"next_action\": \"收集预算、决策人和采购阶段信息\", \"risk_flags\": []}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_43190d095e914d398c531868",
+                "content": "{\"success\": true, \"data\": {\"qualification_level\": \"medium\", \"missing_info\": [\"预算范围\", \"决策人\", \"采购阶段\"], \"next_action\": \"收集预算、决策人和采购阶段信息\", \"risk_flags\": []}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "理解，很多客户在初期都是先了解情况。\n\n为了给您提供更精准的方案，能否简单了解一下：\n\n1. **预算范围**：您大概的预算是多少？比如是几万、十几万还是更高？\n2. **决策人**：目前是您个人在了解，还是需要和团队其他成员一起决策？\n3. **采购时间**：您希望什么时候开始使用？是近期就有计划，还是先做调研？\n\n这些信息能帮助我们为您准备更合适的资料和演示。如果方便的话，也可以告诉我您的邮箱，我可以先发送一些制造业相关的案例资料给您参考。"
+              }
+            ],
+            "qualification_level": "medium",
+            "missing_info": [
+              "预算范围",
+              "决策人",
+              "采购阶段"
+            ],
+            "next_action": "收集预算、决策人和采购阶段信息",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "update_state",
+                "arguments": {
+                  "qualification_level": "medium",
+                  "missing_info": [
+                    "预算范围",
+                    "决策人",
+                    "采购阶段"
+                  ],
+                  "next_action": "收集预算、决策人和采购阶段信息",
+                  "risk_flags": []
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "qualification_level": "medium",
+                    "missing_info": [
+                      "预算范围",
+                      "决策人",
+                      "采购阶段"
+                    ],
+                    "next_action": "收集预算、决策人和采购阶段信息",
+                    "risk_flags": []
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "get_lead_context",
+        "search_knowledge_base",
+        "update_state"
+      ]
+    },
+    "final_message": "理解，很多客户在初期都是先了解情况。\n\n为了给您提供更精准的方案，能否简单了解一下：\n\n1. **预算范围**：您大概的预算是多少？比如是几万、十几万还是更高？\n2. **决策人**：目前是您个人在了解，还是需要和团队其他成员一起决策？\n3. **采购时间**：您希望什么时候开始使用？是近期就有计划，还是先做调研？\n\n这些信息能帮助我们为您准备更合适的资料和演示。如果方便的话，也可以告诉我您的邮箱，我可以先发送一些制造业相关的案例资料给您参考。",
+    "final_tool_calls": [
+      {
+        "tool_name": "update_state",
+        "arguments": {
+          "qualification_level": "medium",
+          "missing_info": [
+            "预算范围",
+            "决策人",
+            "采购阶段"
+          ],
+          "next_action": "收集预算、决策人和采购阶段信息",
+          "risk_flags": []
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_3d42bbf09b8d40b7935e394e",
+              "type": "function",
+              "function": {
+                "name": "get_lead_context",
+                "arguments": "{\"lead_id\": \"L001\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_3d42bbf09b8d40b7935e394e",
+          "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_ce754373d7ef4c0f83a015b9",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"销售跟进 线索管理 制造业 客户管理\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_ce754373d7ef4c0f83a015b9",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！我是小锐，很高兴为您服务。\n\n了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们服务类似制造企业的经验，这类问题通常可以通过AI销售助手有效解决。比如某大型制造企业使用后，销售跟进响应时间从4小时缩短到15分钟，线索转化率提升了32%。\n\n为了更好地帮助您，我想了解几个关键信息：\n\n1. **预算范围**：您大概的预算是多少？\n2. **决策人**：目前是谁在主导这个项目的决策？\n3. **当前阶段**：您目前处于调研阶段还是已经有明确的采购计划？\n\n这些信息能帮助我们为您推荐最合适的解决方案。"
+        },
+        {
+          "role": "user",
+          "content": "还没定。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_43190d095e914d398c531868",
+              "type": "function",
+              "function": {
+                "name": "update_state",
+                "arguments": "{\"qualification_level\": \"medium\", \"missing_info\": [\"预算范围\", \"决策人\", \"采购阶段\"], \"next_action\": \"收集预算、决策人和采购阶段信息\", \"risk_flags\": []}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_43190d095e914d398c531868",
+          "content": "{\"success\": true, \"data\": {\"qualification_level\": \"medium\", \"missing_info\": [\"预算范围\", \"决策人\", \"采购阶段\"], \"next_action\": \"收集预算、决策人和采购阶段信息\", \"risk_flags\": []}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "理解，很多客户在初期都是先了解情况。\n\n为了给您提供更精准的方案，能否简单了解一下：\n\n1. **预算范围**：您大概的预算是多少？比如是几万、十几万还是更高？\n2. **决策人**：目前是您个人在了解，还是需要和团队其他成员一起决策？\n3. **采购时间**：您希望什么时候开始使用？是近期就有计划，还是先做调研？\n\n这些信息能帮助我们为您准备更合适的资料和演示。如果方便的话，也可以告诉我您的邮箱，我可以先发送一些制造业相关的案例资料给您参考。"
+        }
+      ],
+      "qualification_level": "medium",
+      "missing_info": [
+        "预算范围",
+        "决策人",
+        "采购阶段"
+      ],
+      "next_action": "收集预算、决策人和采购阶段信息",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "update_state",
+          "arguments": {
+            "qualification_level": "medium",
+            "missing_info": [
+              "预算范围",
+              "决策人",
+              "采购阶段"
+            ],
+            "next_action": "收集预算、决策人和采购阶段信息",
+            "risk_flags": []
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "qualification_level": "medium",
+              "missing_info": [
+                "预算范围",
+                "决策人",
+                "采购阶段"
+              ],
+              "next_action": "收集预算、决策人和采购阶段信息",
+              "risk_flags": []
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: 用户表示还没定预算时，Agent没有结束对话或说'没有预算就无法继续'，而是继续挖掘需求（决策流程、时间规划），并尝试推进到Demo预约，符合评分标准。",
+      "Trajectory 检查通过",
+      "交互轮次: 2",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 26412.16,
+    "trajectory": {
+      "case_id": "E017",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。",
+          "agent_message": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们的经验，类似规模的制造企业通过AI销售助手可以显著改善这些问题。比如我们服务过的一家大型制造企业，使用我们的解决方案后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升了32%。\n\n为了更好地为您推荐合适的解决方案，我想了解几个关键信息：\n\n1. **预算范围**：您这次大概的预算是多少？\n2. **决策流程**：这个项目的主要决策人是谁？是您直接负责还是需要其他部门参与？\n3. **时间规划**：您希望什么时候能够上线使用？\n\n另外，如果您方便的话，我们可以安排一个产品演示，让您更直观地了解我们的系统如何解决您目前的问题。您觉得怎么样？",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "销售跟进 客户管理 制造业解决方案"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n让我先了解一下我们产品的相关信息，看看能否帮助解决您的问题。",
+                "tool_calls": [
+                  {
+                    "id": "call_95a3cee1dc564d4988946908",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售跟进 客户管理 制造业解决方案\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_95a3cee1dc564d4988946908",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们的经验，类似规模的制造企业通过AI销售助手可以显著改善这些问题。比如我们服务过的一家大型制造企业，使用我们的解决方案后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升了32%。\n\n为了更好地为您推荐合适的解决方案，我想了解几个关键信息：\n\n1. **预算范围**：您这次大概的预算是多少？\n2. **决策流程**：这个项目的主要决策人是谁？是您直接负责还是需要其他部门参与？\n3. **时间规划**：您希望什么时候能够上线使用？\n\n另外，如果您方便的话，我们可以安排一个产品演示，让您更直观地了解我们的系统如何解决您目前的问题。您觉得怎么样？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "销售跟进 客户管理 制造业解决方案"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB006",
+                        "category": "客户案例",
+                        "title": "制造业案例",
+                        "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        },
+        {
+          "turn": 2,
+          "user_message": "还没定。",
+          "agent_message": "理解，预算确实需要根据具体方案来确定。\n\n为了给您提供更精准的建议，我想先了解一下：\n\n1. **决策流程**：这个项目是您直接负责决策，还是需要其他部门（比如IT、财务等）一起参与？\n2. **时间规划**：您希望大概什么时候能够解决这个问题？是希望尽快上线，还是可以等一段时间？\n\n另外，关于预算，我们通常会根据企业规模、用户数量和功能需求来制定方案。像您这样25人销售团队的情况，我们可以先做个初步评估。\n\n如果您方便的话，我们可以先安排一个15-20分钟的快速演示，让您看看系统是如何解决销售跟进不及时和漏客户的问题。这样您也能更好地判断是否符合您的需求。您觉得怎么样？",
+          "tool_calls": [],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n让我先了解一下我们产品的相关信息，看看能否帮助解决您的问题。",
+                "tool_calls": [
+                  {
+                    "id": "call_95a3cee1dc564d4988946908",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售跟进 客户管理 制造业解决方案\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_95a3cee1dc564d4988946908",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们的经验，类似规模的制造企业通过AI销售助手可以显著改善这些问题。比如我们服务过的一家大型制造企业，使用我们的解决方案后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升了32%。\n\n为了更好地为您推荐合适的解决方案，我想了解几个关键信息：\n\n1. **预算范围**：您这次大概的预算是多少？\n2. **决策流程**：这个项目的主要决策人是谁？是您直接负责还是需要其他部门参与？\n3. **时间规划**：您希望什么时候能够上线使用？\n\n另外，如果您方便的话，我们可以安排一个产品演示，让您更直观地了解我们的系统如何解决您目前的问题。您觉得怎么样？"
+              },
+              {
+                "role": "user",
+                "content": "还没定。"
+              },
+              {
+                "role": "assistant",
+                "content": "理解，预算确实需要根据具体方案来确定。\n\n为了给您提供更精准的建议，我想先了解一下：\n\n1. **决策流程**：这个项目是您直接负责决策，还是需要其他部门（比如IT、财务等）一起参与？\n2. **时间规划**：您希望大概什么时候能够解决这个问题？是希望尽快上线，还是可以等一段时间？\n\n另外，关于预算，我们通常会根据企业规模、用户数量和功能需求来制定方案。像您这样25人销售团队的情况，我们可以先做个初步评估。\n\n如果您方便的话，我们可以先安排一个15-20分钟的快速演示，让您看看系统是如何解决销售跟进不及时和漏客户的问题。这样您也能更好地判断是否符合您的需求。您觉得怎么样？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "理解，预算确实需要根据具体方案来确定。\n\n为了给您提供更精准的建议，我想先了解一下：\n\n1. **决策流程**：这个项目是您直接负责决策，还是需要其他部门（比如IT、财务等）一起参与？\n2. **时间规划**：您希望大概什么时候能够解决这个问题？是希望尽快上线，还是可以等一段时间？\n\n另外，关于预算，我们通常会根据企业规模、用户数量和功能需求来制定方案。像您这样25人销售团队的情况，我们可以先做个初步评估。\n\n如果您方便的话，我们可以先安排一个15-20分钟的快速演示，让您看看系统是如何解决销售跟进不及时和漏客户的问题。这样您也能更好地判断是否符合您的需求。您觉得怎么样？",
+    "final_tool_calls": [],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们是300人的制造业公司，销售团队25人。现在销售跟进线索不及时，经常漏掉客户。"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n让我先了解一下我们产品的相关信息，看看能否帮助解决您的问题。",
+          "tool_calls": [
+            {
+              "id": "call_95a3cee1dc564d4988946908",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"销售跟进 客户管理 制造业解决方案\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_95a3cee1dc564d4988946908",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！了解到华锐制造目前有25人的销售团队，面临销售跟进不及时和漏掉客户的问题，这确实是制造业企业常见的痛点。\n\n根据我们的经验，类似规模的制造企业通过AI销售助手可以显著改善这些问题。比如我们服务过的一家大型制造企业，使用我们的解决方案后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升了32%。\n\n为了更好地为您推荐合适的解决方案，我想了解几个关键信息：\n\n1. **预算范围**：您这次大概的预算是多少？\n2. **决策流程**：这个项目的主要决策人是谁？是您直接负责还是需要其他部门参与？\n3. **时间规划**：您希望什么时候能够上线使用？\n\n另外，如果您方便的话，我们可以安排一个产品演示，让您更直观地了解我们的系统如何解决您目前的问题。您觉得怎么样？"
+        },
+        {
+          "role": "user",
+          "content": "还没定。"
+        },
+        {
+          "role": "assistant",
+          "content": "理解，预算确实需要根据具体方案来确定。\n\n为了给您提供更精准的建议，我想先了解一下：\n\n1. **决策流程**：这个项目是您直接负责决策，还是需要其他部门（比如IT、财务等）一起参与？\n2. **时间规划**：您希望大概什么时候能够解决这个问题？是希望尽快上线，还是可以等一段时间？\n\n另外，关于预算，我们通常会根据企业规模、用户数量和功能需求来制定方案。像您这样25人销售团队的情况，我们可以先做个初步评估。\n\n如果您方便的话，我们可以先安排一个15-20分钟的快速演示，让您看看系统是如何解决销售跟进不及时和漏客户的问题。这样您也能更好地判断是否符合您的需求。您觉得怎么样？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [],
+      "turn_count": 0
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 运行时生成的日志和评测结果（不上传 GitHub）
+eval_logs/
+eval_runs/
+trajectories/
+logs/
+*.log
+
+# 本地配置（包含 API Key）
+.sales_agent/
+
+# 临时文件
+*.tmp
+*.bak
+prompt_v2.txt
+eval_output_*.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp

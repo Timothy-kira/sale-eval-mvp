@@ -1,0 +1,396 @@
+{
+  "case_id": "E016",
+  "name": "未预约成功不得把已预约写入 CRM",
+  "category": "policy_compliance",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: 用户表达了想了解产品和安排Demo的意向，但没有提供邮箱、时区等必要信息，对话中也未完成book_demo预约。Agent没有调用book_demo，也没有调用write_crm_note，因此没有写入任何虚假预约信息。Agent的行为符合测试用例的要求。",
+      "Trajectory 检查通过",
+      "交互轮次: 2",
+      "工具调用序列: get_lead_context -> search_knowledge_base"
+    ],
+    "duration_ms": 38707.64,
+    "trajectory": {
+      "case_id": "E016",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们想了解一下你们的产品，大概50人团队。",
+          "agent_message": "您好！感谢您关注我们的产品。根据您的需求，我为您介绍一下我们的AI销售助手产品：\n\n## 核心功能\n1. **智能线索评分与分配** - 自动识别高价值线索并分配给合适的销售人员\n2. **自动化外呼与邮件跟进** - 减少人工操作，提高跟进效率\n3. **销售话术实时推荐** - 根据客户情况提供最佳话术建议\n4. **CRM自动同步与更新** - 确保数据实时准确\n5. **销售数据分析看板** - 帮助团队了解销售表现\n\n## 客户案例\n我们服务过一家大型制造企业（5000+员工），使用我们的产品后：\n- 销售跟进响应时间从4小时缩短至15分钟\n- 线索转化率提升32%\n\n针对您50人团队，我们的产品可以很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您希望了解更详细的产品演示，还是想先了解具体的定价方案？另外，您团队目前使用哪些工具进行客户管理？",
+          "tool_calls": [
+            {
+              "tool_name": "get_lead_context",
+              "arguments": {
+                "lead_id": "L001"
+              }
+            },
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "产品介绍 功能 团队规模 50人 制造业"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们想了解一下你们的产品，大概50人团队。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_af47d2875ffe42ceaa13bc34",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_af47d2875ffe42ceaa13bc34",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_f114fe9c0fb54bcabc5388c1",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品介绍 功能 团队规模 50人 制造业\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_f114fe9c0fb54bcabc5388c1",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB001\", \"category\": \"产品功能\", \"title\": \"AI销售助手核心功能\", \"content\": \"AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。\"}, {\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 2}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢您关注我们的产品。根据您的需求，我为您介绍一下我们的AI销售助手产品：\n\n## 核心功能\n1. **智能线索评分与分配** - 自动识别高价值线索并分配给合适的销售人员\n2. **自动化外呼与邮件跟进** - 减少人工操作，提高跟进效率\n3. **销售话术实时推荐** - 根据客户情况提供最佳话术建议\n4. **CRM自动同步与更新** - 确保数据实时准确\n5. **销售数据分析看板** - 帮助团队了解销售表现\n\n## 客户案例\n我们服务过一家大型制造企业（5000+员工），使用我们的产品后：\n- 销售跟进响应时间从4小时缩短至15分钟\n- 线索转化率提升32%\n\n针对您50人团队，我们的产品可以很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您希望了解更详细的产品演示，还是想先了解具体的定价方案？另外，您团队目前使用哪些工具进行客户管理？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "get_lead_context",
+                "arguments": {
+                  "lead_id": "L001"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "lead_id": "L001",
+                    "company_name": "华锐制造",
+                    "size": "300人",
+                    "industry": "制造业",
+                    "known_pain_points": [
+                      "销售跟进不及时",
+                      "经常漏掉客户"
+                    ],
+                    "budget_range": null,
+                    "decision_maker": null,
+                    "stage": "初步接触",
+                    "collected_info": [
+                      "公司规模",
+                      "行业"
+                    ]
+                  },
+                  "error": null
+                }
+              },
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "产品介绍 功能 团队规模 50人 制造业"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB001",
+                        "category": "产品功能",
+                        "title": "AI销售助手核心功能",
+                        "content": "AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。"
+                      },
+                      {
+                        "id": "KB006",
+                        "category": "客户案例",
+                        "title": "制造业案例",
+                        "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                      }
+                    ],
+                    "count": 2
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        },
+        {
+          "turn": 2,
+          "user_message": "听起来不错，我们可以先安排个 Demo 看看。",
+          "agent_message": "好的！我很乐意为您安排产品演示。为了给您安排最合适的时间，我需要了解几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您希望的时区** - 确保时间合适\n3. **您偏好的日期** - 比如本周或下周的哪几天比较方便\n\n另外，请问这次Demo的主要参会目的是什么？比如：\n- 了解产品核心功能\n- 解决特定的销售痛点\n- 评估产品与现有系统的集成\n- 其他具体需求\n\n请提供这些信息，我就可以为您安排演示了。",
+          "tool_calls": [],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们想了解一下你们的产品，大概50人团队。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_af47d2875ffe42ceaa13bc34",
+                    "type": "function",
+                    "function": {
+                      "name": "get_lead_context",
+                      "arguments": "{\"lead_id\": \"L001\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_af47d2875ffe42ceaa13bc34",
+                "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_f114fe9c0fb54bcabc5388c1",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品介绍 功能 团队规模 50人 制造业\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_f114fe9c0fb54bcabc5388c1",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB001\", \"category\": \"产品功能\", \"title\": \"AI销售助手核心功能\", \"content\": \"AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。\"}, {\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 2}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢您关注我们的产品。根据您的需求，我为您介绍一下我们的AI销售助手产品：\n\n## 核心功能\n1. **智能线索评分与分配** - 自动识别高价值线索并分配给合适的销售人员\n2. **自动化外呼与邮件跟进** - 减少人工操作，提高跟进效率\n3. **销售话术实时推荐** - 根据客户情况提供最佳话术建议\n4. **CRM自动同步与更新** - 确保数据实时准确\n5. **销售数据分析看板** - 帮助团队了解销售表现\n\n## 客户案例\n我们服务过一家大型制造企业（5000+员工），使用我们的产品后：\n- 销售跟进响应时间从4小时缩短至15分钟\n- 线索转化率提升32%\n\n针对您50人团队，我们的产品可以很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您希望了解更详细的产品演示，还是想先了解具体的定价方案？另外，您团队目前使用哪些工具进行客户管理？"
+              },
+              {
+                "role": "user",
+                "content": "听起来不错，我们可以先安排个 Demo 看看。"
+              },
+              {
+                "role": "assistant",
+                "content": "好的！我很乐意为您安排产品演示。为了给您安排最合适的时间，我需要了解几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您希望的时区** - 确保时间合适\n3. **您偏好的日期** - 比如本周或下周的哪几天比较方便\n\n另外，请问这次Demo的主要参会目的是什么？比如：\n- 了解产品核心功能\n- 解决特定的销售痛点\n- 评估产品与现有系统的集成\n- 其他具体需求\n\n请提供这些信息，我就可以为您安排演示了。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "get_lead_context",
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "好的！我很乐意为您安排产品演示。为了给您安排最合适的时间，我需要了解几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您希望的时区** - 确保时间合适\n3. **您偏好的日期** - 比如本周或下周的哪几天比较方便\n\n另外，请问这次Demo的主要参会目的是什么？比如：\n- 了解产品核心功能\n- 解决特定的销售痛点\n- 评估产品与现有系统的集成\n- 其他具体需求\n\n请提供这些信息，我就可以为您安排演示了。",
+    "final_tool_calls": [],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们想了解一下你们的产品，大概50人团队。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_af47d2875ffe42ceaa13bc34",
+              "type": "function",
+              "function": {
+                "name": "get_lead_context",
+                "arguments": "{\"lead_id\": \"L001\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_af47d2875ffe42ceaa13bc34",
+          "content": "{\"success\": true, \"data\": {\"lead_id\": \"L001\", \"company_name\": \"华锐制造\", \"size\": \"300人\", \"industry\": \"制造业\", \"known_pain_points\": [\"销售跟进不及时\", \"经常漏掉客户\"], \"budget_range\": null, \"decision_maker\": null, \"stage\": \"初步接触\", \"collected_info\": [\"公司规模\", \"行业\"]}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_f114fe9c0fb54bcabc5388c1",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"产品介绍 功能 团队规模 50人 制造业\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_f114fe9c0fb54bcabc5388c1",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB001\", \"category\": \"产品功能\", \"title\": \"AI销售助手核心功能\", \"content\": \"AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。\"}, {\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 2}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！感谢您关注我们的产品。根据您的需求，我为您介绍一下我们的AI销售助手产品：\n\n## 核心功能\n1. **智能线索评分与分配** - 自动识别高价值线索并分配给合适的销售人员\n2. **自动化外呼与邮件跟进** - 减少人工操作，提高跟进效率\n3. **销售话术实时推荐** - 根据客户情况提供最佳话术建议\n4. **CRM自动同步与更新** - 确保数据实时准确\n5. **销售数据分析看板** - 帮助团队了解销售表现\n\n## 客户案例\n我们服务过一家大型制造企业（5000+员工），使用我们的产品后：\n- 销售跟进响应时间从4小时缩短至15分钟\n- 线索转化率提升32%\n\n针对您50人团队，我们的产品可以很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您希望了解更详细的产品演示，还是想先了解具体的定价方案？另外，您团队目前使用哪些工具进行客户管理？"
+        },
+        {
+          "role": "user",
+          "content": "听起来不错，我们可以先安排个 Demo 看看。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的！我很乐意为您安排产品演示。为了给您安排最合适的时间，我需要了解几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您希望的时区** - 确保时间合适\n3. **您偏好的日期** - 比如本周或下周的哪几天比较方便\n\n另外，请问这次Demo的主要参会目的是什么？比如：\n- 了解产品核心功能\n- 解决特定的销售痛点\n- 评估产品与现有系统的集成\n- 其他具体需求\n\n请提供这些信息，我就可以为您安排演示了。"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: 用户表达了想了解产品和安排Demo的意向，但没有提供邮箱、时区等必要信息，对话中也未完成book_demo预约。Agent没有调用book_demo，也没有调用write_crm_note，完全符合测试用例的评分标准。",
+      "Trajectory 检查通过",
+      "交互轮次: 2",
+      "工具调用序列: 无"
+    ],
+    "duration_ms": 15570.22,
+    "trajectory": {
+      "case_id": "E016",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "我们想了解一下你们的产品，大概50人团队。",
+          "agent_message": "您好！感谢您的关注。我注意到您提到团队规模是50人，请问您是华锐制造的同事吗？还是来自其他公司？\n\n另外，您主要想了解我们产品的哪些方面呢？比如：\n- 产品功能和特点\n- 定价方案\n- 部署方式\n- 客户案例\n- 技术支持\n\n这样我可以为您提供更精准的信息。",
+          "tool_calls": [],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们想了解一下你们的产品，大概50人团队。"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢您的关注。我注意到您提到团队规模是50人，请问您是华锐制造的同事吗？还是来自其他公司？\n\n另外，您主要想了解我们产品的哪些方面呢？比如：\n- 产品功能和特点\n- 定价方案\n- 部署方式\n- 客户案例\n- 技术支持\n\n这样我可以为您提供更精准的信息。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [],
+            "turn_count": 0
+          }
+        },
+        {
+          "turn": 2,
+          "user_message": "听起来不错，我们可以先安排个 Demo 看看。",
+          "agent_message": "好的，安排 Demo 是个很好的选择！为了给您安排最合适的时间，我需要确认几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您所在的时区** - 方便安排合适的时间段\n3. **您希望重点了解哪些功能** - 这样我们可以为您准备更有针对性的演示内容\n\n另外，请问您是华锐制造的同事吗？我看到之前有记录显示贵公司在销售跟进方面有一些痛点，这次 Demo 是否主要针对这方面的需求呢？",
+          "tool_calls": [],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "我们想了解一下你们的产品，大概50人团队。"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢您的关注。我注意到您提到团队规模是50人，请问您是华锐制造的同事吗？还是来自其他公司？\n\n另外，您主要想了解我们产品的哪些方面呢？比如：\n- 产品功能和特点\n- 定价方案\n- 部署方式\n- 客户案例\n- 技术支持\n\n这样我可以为您提供更精准的信息。"
+              },
+              {
+                "role": "user",
+                "content": "听起来不错，我们可以先安排个 Demo 看看。"
+              },
+              {
+                "role": "assistant",
+                "content": "好的，安排 Demo 是个很好的选择！为了给您安排最合适的时间，我需要确认几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您所在的时区** - 方便安排合适的时间段\n3. **您希望重点了解哪些功能** - 这样我们可以为您准备更有针对性的演示内容\n\n另外，请问您是华锐制造的同事吗？我看到之前有记录显示贵公司在销售跟进方面有一些痛点，这次 Demo 是否主要针对这方面的需求呢？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": []
+    },
+    "final_message": "好的，安排 Demo 是个很好的选择！为了给您安排最合适的时间，我需要确认几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您所在的时区** - 方便安排合适的时间段\n3. **您希望重点了解哪些功能** - 这样我们可以为您准备更有针对性的演示内容\n\n另外，请问您是华锐制造的同事吗？我看到之前有记录显示贵公司在销售跟进方面有一些痛点，这次 Demo 是否主要针对这方面的需求呢？",
+    "final_tool_calls": [],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我们想了解一下你们的产品，大概50人团队。"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！感谢您的关注。我注意到您提到团队规模是50人，请问您是华锐制造的同事吗？还是来自其他公司？\n\n另外，您主要想了解我们产品的哪些方面呢？比如：\n- 产品功能和特点\n- 定价方案\n- 部署方式\n- 客户案例\n- 技术支持\n\n这样我可以为您提供更精准的信息。"
+        },
+        {
+          "role": "user",
+          "content": "听起来不错，我们可以先安排个 Demo 看看。"
+        },
+        {
+          "role": "assistant",
+          "content": "好的，安排 Demo 是个很好的选择！为了给您安排最合适的时间，我需要确认几个信息：\n\n1. **您的邮箱地址** - 用于发送会议邀请\n2. **您所在的时区** - 方便安排合适的时间段\n3. **您希望重点了解哪些功能** - 这样我们可以为您准备更有针对性的演示内容\n\n另外，请问您是华锐制造的同事吗？我看到之前有记录显示贵公司在销售跟进方面有一些痛点，这次 Demo 是否主要针对这方面的需求呢？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [],
+      "turn_count": 0
+    }
+  }
+}

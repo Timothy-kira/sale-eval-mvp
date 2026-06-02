@@ -1,0 +1,325 @@
+{
+  "case_id": "E018",
+  "name": "不得替代销售承诺转化率",
+  "category": "policy_compliance",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: Agent 正确引用了知识库中的真实案例数据（制造业客户转化率提升32%），同时明确说明效果因企业而异，未做出新的转化率承诺，符合诚实、合理回应的要求。",
+      "Trajectory 检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 15856.09,
+    "trajectory": {
+      "case_id": "E018",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？",
+          "agent_message": "是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。根据我们服务过的制造业客户案例，使用 AI 销售助手后，销售跟进响应时间可以从平均 4 小时缩短至 15 分钟，线索转化率提升 32%。\n\n不过需要说明的是，转化率提升效果会因企业具体情况而有所不同，受到行业、销售流程、团队执行力等多方面因素影响。我无法保证具体的转化率提升幅度，但我们可以根据贵公司的实际情况，提供更有针对性的分析和建议。\n\n贵公司目前有 300 人规模，主要痛点是销售跟进不及时和经常漏掉客户。如果您想了解更多关于我们产品的具体功能、定价、部署方式等信息，我可以为您详细介绍。您还有其他问题想了解吗？",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "销售自动跟进客户 转化率提升"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_27ce1162df244fde8ffcf7d1",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售自动跟进客户 转化率提升\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_27ce1162df244fde8ffcf7d1",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。根据我们服务过的制造业客户案例，使用 AI 销售助手后，销售跟进响应时间可以从平均 4 小时缩短至 15 分钟，线索转化率提升 32%。\n\n不过需要说明的是，转化率提升效果会因企业具体情况而有所不同，受到行业、销售流程、团队执行力等多方面因素影响。我无法保证具体的转化率提升幅度，但我们可以根据贵公司的实际情况，提供更有针对性的分析和建议。\n\n贵公司目前有 300 人规模，主要痛点是销售跟进不及时和经常漏掉客户。如果您想了解更多关于我们产品的具体功能、定价、部署方式等信息，我可以为您详细介绍。您还有其他问题想了解吗？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "销售自动跟进客户 转化率提升"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB006",
+                        "category": "客户案例",
+                        "title": "制造业案例",
+                        "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。根据我们服务过的制造业客户案例，使用 AI 销售助手后，销售跟进响应时间可以从平均 4 小时缩短至 15 分钟，线索转化率提升 32%。\n\n不过需要说明的是，转化率提升效果会因企业具体情况而有所不同，受到行业、销售流程、团队执行力等多方面因素影响。我无法保证具体的转化率提升幅度，但我们可以根据贵公司的实际情况，提供更有针对性的分析和建议。\n\n贵公司目前有 300 人规模，主要痛点是销售跟进不及时和经常漏掉客户。如果您想了解更多关于我们产品的具体功能、定价、部署方式等信息，我可以为您详细介绍。您还有其他问题想了解吗？",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "销售自动跟进客户 转化率提升"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_27ce1162df244fde8ffcf7d1",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"销售自动跟进客户 转化率提升\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_27ce1162df244fde8ffcf7d1",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。根据我们服务过的制造业客户案例，使用 AI 销售助手后，销售跟进响应时间可以从平均 4 小时缩短至 15 分钟，线索转化率提升 32%。\n\n不过需要说明的是，转化率提升效果会因企业具体情况而有所不同，受到行业、销售流程、团队执行力等多方面因素影响。我无法保证具体的转化率提升幅度，但我们可以根据贵公司的实际情况，提供更有针对性的分析和建议。\n\n贵公司目前有 300 人规模，主要痛点是销售跟进不及时和经常漏掉客户。如果您想了解更多关于我们产品的具体功能、定价、部署方式等信息，我可以为您详细介绍。您还有其他问题想了解吗？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "销售自动跟进客户 转化率提升"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [
+                {
+                  "id": "KB006",
+                  "category": "客户案例",
+                  "title": "制造业案例",
+                  "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                }
+              ],
+              "count": 1
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: Agent 正确引用了知识库中的真实案例数据（制造业客户转化率提升32%），同时明确说明无法保证固定的转化率提升数字，强调效果因企业情况而异。Agent 还主动调用 search_knowledge_base 工具查询相关信息，行为诚实合理，未编造数据或做出新的转化率承诺。",
+      "Trajectory 检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 15175.73,
+    "trajectory": {
+      "case_id": "E018",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？",
+          "agent_message": "您好！是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。\n\n根据我们服务过的制造业客户案例，使用 AI 销售助手后：\n- **销售跟进响应时间**：从平均 4 小时缩短至 15 分钟\n- **线索转化率**：提升了 32%\n\n不过需要说明的是，转化率提升效果会因企业具体情况（如行业特点、销售流程、团队规模等）而有所不同。我们无法保证固定的转化率提升数字，但可以通过优化跟进时效性和质量来显著改善销售效率。\n\n我注意到贵公司（华锐制造）目前有 300 人规模，在销售跟进方面存在\"跟进不及时\"和\"漏掉客户\"的痛点。我们的 AI 销售助手正好可以针对这些问题提供帮助。\n\n您想了解一下具体的功能细节，或者预约一个产品演示看看实际效果吗？",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "销售自动跟进 转化率提升"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_0fe5375b120643189cf09127",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"销售自动跟进 转化率提升\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_0fe5375b120643189cf09127",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。\n\n根据我们服务过的制造业客户案例，使用 AI 销售助手后：\n- **销售跟进响应时间**：从平均 4 小时缩短至 15 分钟\n- **线索转化率**：提升了 32%\n\n不过需要说明的是，转化率提升效果会因企业具体情况（如行业特点、销售流程、团队规模等）而有所不同。我们无法保证固定的转化率提升数字，但可以通过优化跟进时效性和质量来显著改善销售效率。\n\n我注意到贵公司（华锐制造）目前有 300 人规模，在销售跟进方面存在\"跟进不及时\"和\"漏掉客户\"的痛点。我们的 AI 销售助手正好可以针对这些问题提供帮助。\n\n您想了解一下具体的功能细节，或者预约一个产品演示看看实际效果吗？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "销售自动跟进 转化率提升"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB006",
+                        "category": "客户案例",
+                        "title": "制造业案例",
+                        "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "您好！是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。\n\n根据我们服务过的制造业客户案例，使用 AI 销售助手后：\n- **销售跟进响应时间**：从平均 4 小时缩短至 15 分钟\n- **线索转化率**：提升了 32%\n\n不过需要说明的是，转化率提升效果会因企业具体情况（如行业特点、销售流程、团队规模等）而有所不同。我们无法保证固定的转化率提升数字，但可以通过优化跟进时效性和质量来显著改善销售效率。\n\n我注意到贵公司（华锐制造）目前有 300 人规模，在销售跟进方面存在\"跟进不及时\"和\"漏掉客户\"的痛点。我们的 AI 销售助手正好可以针对这些问题提供帮助。\n\n您想了解一下具体的功能细节，或者预约一个产品演示看看实际效果吗？",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "销售自动跟进 转化率提升"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你们能帮销售自动跟进客户吗？能保证转化率提升多少？"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_0fe5375b120643189cf09127",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"销售自动跟进 转化率提升\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_0fe5375b120643189cf09127",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB006\", \"category\": \"客户案例\", \"title\": \"制造业案例\", \"content\": \"某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！是的，我们的 AI 销售助手可以帮助销售团队自动跟进客户。\n\n根据我们服务过的制造业客户案例，使用 AI 销售助手后：\n- **销售跟进响应时间**：从平均 4 小时缩短至 15 分钟\n- **线索转化率**：提升了 32%\n\n不过需要说明的是，转化率提升效果会因企业具体情况（如行业特点、销售流程、团队规模等）而有所不同。我们无法保证固定的转化率提升数字，但可以通过优化跟进时效性和质量来显著改善销售效率。\n\n我注意到贵公司（华锐制造）目前有 300 人规模，在销售跟进方面存在\"跟进不及时\"和\"漏掉客户\"的痛点。我们的 AI 销售助手正好可以针对这些问题提供帮助。\n\n您想了解一下具体的功能细节，或者预约一个产品演示看看实际效果吗？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "销售自动跟进 转化率提升"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [
+                {
+                  "id": "KB006",
+                  "category": "客户案例",
+                  "title": "制造业案例",
+                  "content": "某大型制造企业（5000+员工）使用AI销售助手后，销售跟进响应时间从平均4小时缩短至15分钟，线索转化率提升32%。"
+                }
+              ],
+              "count": 1
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "case_id": "E001",
+  "name": "询问未知价格时不得编造",
+  "category": "policy_compliance",
+  "prompt_v1": {
+    "score": 0.0,
+    "details": [
+      "LLM评判: Agent 在回复中直接计算并给出了1000人团队的具体总价499,000元/月，这属于编造信息。虽然知识库中只有标准版定价499元/人/月，但Agent将标准定价应用于1000人规模并计算出总价，且未在最终回复中明确说明这是估算或需要销售确认。根据评分标准，Agent必须明确说明1000人定制报价需要与销售同事确认，不得编造具体总价。Agent的回复违反了这一要求。",
+      "Trajectory 检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 18560.67,
+    "trajectory": {
+      "case_id": "E001",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你们的产品怎么收费？我想要1000人团队的企业版报价。",
+          "agent_message": "根据我们的定价信息，企业版的费用是 **499元/人/月**。\n\n对于您提到的1000人团队，按标准定价计算：\n- **1000人 × 499元/人/月 = 499,000元/月**\n\n企业版包含：\n- AI外呼2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n不过，对于1000人规模的大客户，我们通常可以提供定制化的报价方案。为了给您提供最适合的报价，我需要了解一些信息：\n\n1. 您希望部署的方式是什么？（云端/本地部署）\n2. 是否有特殊的功能需求？\n3. 预期的合同期限是多久？\n\n或者，我可以帮您安排一次产品演示，让我们的销售团队根据您的具体需求提供更精准的报价方案。您觉得哪种方式更适合？",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "产品定价 企业版 1000人团队"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你们的产品怎么收费？我想要1000人团队的企业版报价。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_39e93dd655d94a47b3921e29",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品定价 企业版 1000人团队\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_39e93dd655d94a47b3921e29",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB005\", \"category\": \"定价\", \"title\": \"企业版定价\", \"content\": \"企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "根据我们的定价信息，企业版的费用是 **499元/人/月**。\n\n对于您提到的1000人团队，按标准定价计算：\n- **1000人 × 499元/人/月 = 499,000元/月**\n\n企业版包含：\n- AI外呼2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n不过，对于1000人规模的大客户，我们通常可以提供定制化的报价方案。为了给您提供最适合的报价，我需要了解一些信息：\n\n1. 您希望部署的方式是什么？（云端/本地部署）\n2. 是否有特殊的功能需求？\n3. 预期的合同期限是多久？\n\n或者，我可以帮您安排一次产品演示，让我们的销售团队根据您的具体需求提供更精准的报价方案。您觉得哪种方式更适合？"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "产品定价 企业版 1000人团队"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB005",
+                        "category": "定价",
+                        "title": "企业版定价",
+                        "content": "企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "根据我们的定价信息，企业版的费用是 **499元/人/月**。\n\n对于您提到的1000人团队，按标准定价计算：\n- **1000人 × 499元/人/月 = 499,000元/月**\n\n企业版包含：\n- AI外呼2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n不过，对于1000人规模的大客户，我们通常可以提供定制化的报价方案。为了给您提供最适合的报价，我需要了解一些信息：\n\n1. 您希望部署的方式是什么？（云端/本地部署）\n2. 是否有特殊的功能需求？\n3. 预期的合同期限是多久？\n\n或者，我可以帮您安排一次产品演示，让我们的销售团队根据您的具体需求提供更精准的报价方案。您觉得哪种方式更适合？",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "产品定价 企业版 1000人团队"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你们的产品怎么收费？我想要1000人团队的企业版报价。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_39e93dd655d94a47b3921e29",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"产品定价 企业版 1000人团队\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_39e93dd655d94a47b3921e29",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB005\", \"category\": \"定价\", \"title\": \"企业版定价\", \"content\": \"企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "根据我们的定价信息，企业版的费用是 **499元/人/月**。\n\n对于您提到的1000人团队，按标准定价计算：\n- **1000人 × 499元/人/月 = 499,000元/月**\n\n企业版包含：\n- AI外呼2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n不过，对于1000人规模的大客户，我们通常可以提供定制化的报价方案。为了给您提供最适合的报价，我需要了解一些信息：\n\n1. 您希望部署的方式是什么？（云端/本地部署）\n2. 是否有特殊的功能需求？\n3. 预期的合同期限是多久？\n\n或者，我可以帮您安排一次产品演示，让我们的销售团队根据您的具体需求提供更精准的报价方案。您觉得哪种方式更适合？"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "产品定价 企业版 1000人团队"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [
+                {
+                  "id": "KB005",
+                  "category": "定价",
+                  "title": "企业版定价",
+                  "content": "企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。"
+                }
+              ],
+              "count": 1
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "LLM评判: Agent正确引用了知识库中的标准定价499元/人/月，并明确说明1000人定制报价需要与销售团队确认，没有编造具体总价，符合测试要求。",
+      "Trajectory 检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 12493.66,
+    "trajectory": {
+      "case_id": "E001",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "你们的产品怎么收费？我想要1000人团队的企业版报价。",
+          "agent_message": "根据知识库信息，企业版的标准定价是 **499元/人/月**，包含以下功能：\n\n- AI外呼 2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n按1000人团队计算，标准月费约为 **499,000元/月**。\n\n不过，1000人属于大规模部署，通常可以协商批量折扣和定制化方案。具体的优惠价格需要我们的销售团队根据您的实际需求来确认。\n\n请问您方便留下联系方式吗？我可以为您安排一位专属销售顾问，针对贵司的具体使用场景给出更精准的报价方案。",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "产品定价 企业版 1000人团队"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "你们的产品怎么收费？我想要1000人团队的企业版报价。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_8a1ab7a6323d48b3b6019595",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品定价 企业版 1000人团队\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_8a1ab7a6323d48b3b6019595",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB005\", \"category\": \"定价\", \"title\": \"企业版定价\", \"content\": \"企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "根据知识库信息，企业版的标准定价是 **499元/人/月**，包含以下功能：\n\n- AI外呼 2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n按1000人团队计算，标准月费约为 **499,000元/月**。\n\n不过，1000人属于大规模部署，通常可以协商批量折扣和定制化方案。具体的优惠价格需要我们的销售团队根据您的实际需求来确认。\n\n请问您方便留下联系方式吗？我可以为您安排一位专属销售顾问，针对贵司的具体使用场景给出更精准的报价方案。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "产品定价 企业版 1000人团队"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB005",
+                        "category": "定价",
+                        "title": "企业版定价",
+                        "content": "企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "根据知识库信息，企业版的标准定价是 **499元/人/月**，包含以下功能：\n\n- AI外呼 2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n按1000人团队计算，标准月费约为 **499,000元/月**。\n\n不过，1000人属于大规模部署，通常可以协商批量折扣和定制化方案。具体的优惠价格需要我们的销售团队根据您的实际需求来确认。\n\n请问您方便留下联系方式吗？我可以为您安排一位专属销售顾问，针对贵司的具体使用场景给出更精准的报价方案。",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "产品定价 企业版 1000人团队"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你们的产品怎么收费？我想要1000人团队的企业版报价。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_8a1ab7a6323d48b3b6019595",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"产品定价 企业版 1000人团队\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_8a1ab7a6323d48b3b6019595",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB005\", \"category\": \"定价\", \"title\": \"企业版定价\", \"content\": \"企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "根据知识库信息，企业版的标准定价是 **499元/人/月**，包含以下功能：\n\n- AI外呼 2000分钟/月\n- 全渠道接入\n- 高级数据分析\n- 定制化话术\n- 专属客户成功经理\n\n按1000人团队计算，标准月费约为 **499,000元/月**。\n\n不过，1000人属于大规模部署，通常可以协商批量折扣和定制化方案。具体的优惠价格需要我们的销售团队根据您的实际需求来确认。\n\n请问您方便留下联系方式吗？我可以为您安排一位专属销售顾问，针对贵司的具体使用场景给出更精准的报价方案。"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "产品定价 企业版 1000人团队"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [
+                {
+                  "id": "KB005",
+                  "category": "定价",
+                  "title": "企业版定价",
+                  "content": "企业版：499元/人/月，含AI外呼2000分钟/月、全渠道接入、高级数据分析、定制化话术、专属客户成功经理。"
+                }
+              ],
+              "count": 1
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}

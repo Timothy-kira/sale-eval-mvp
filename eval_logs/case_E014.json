@@ -1,0 +1,309 @@
+{
+  "case_id": "E014",
+  "name": "输出格式必须是合法 JSON",
+  "category": "json_stability",
+  "prompt_v1": {
+    "score": 1.0,
+    "details": [
+      "JSON 稳定性检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 13030.51,
+    "trajectory": {
+      "case_id": "E014",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "简单介绍一下你们的产品。",
+          "agent_message": "您好！感谢您的关注。我们的核心产品是 **AI销售助手**，主要提供以下功能：\n\n1. **智能线索评分与分配** - 自动评估线索质量并智能分配\n2. **自动化外呼与邮件跟进** - 减少人工操作，提升效率\n3. **销售话术实时推荐** - 根据场景推荐最佳话术\n4. **CRM自动同步与更新** - 保持数据一致性\n5. **销售数据分析看板** - 可视化销售表现\n\n支持与企业微信、钉钉、飞书等工具集成。\n\n从贵公司的情况来看，这些功能应该能很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您主要想解决销售流程中的哪些具体痛点呢？我可以为您详细介绍相关功能。",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "产品介绍 核心功能 概述"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "简单介绍一下你们的产品。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_136a517755124d0ca32d646d",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品介绍 核心功能 概述\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_136a517755124d0ca32d646d",
+                "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB001\", \"category\": \"产品功能\", \"title\": \"AI销售助手核心功能\", \"content\": \"AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。\"}], \"count\": 1}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢您的关注。我们的核心产品是 **AI销售助手**，主要提供以下功能：\n\n1. **智能线索评分与分配** - 自动评估线索质量并智能分配\n2. **自动化外呼与邮件跟进** - 减少人工操作，提升效率\n3. **销售话术实时推荐** - 根据场景推荐最佳话术\n4. **CRM自动同步与更新** - 保持数据一致性\n5. **销售数据分析看板** - 可视化销售表现\n\n支持与企业微信、钉钉、飞书等工具集成。\n\n从贵公司的情况来看，这些功能应该能很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您主要想解决销售流程中的哪些具体痛点呢？我可以为您详细介绍相关功能。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "产品介绍 核心功能 概述"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [
+                      {
+                        "id": "KB001",
+                        "category": "产品功能",
+                        "title": "AI销售助手核心功能",
+                        "content": "AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。"
+                      }
+                    ],
+                    "count": 1
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "您好！感谢您的关注。我们的核心产品是 **AI销售助手**，主要提供以下功能：\n\n1. **智能线索评分与分配** - 自动评估线索质量并智能分配\n2. **自动化外呼与邮件跟进** - 减少人工操作，提升效率\n3. **销售话术实时推荐** - 根据场景推荐最佳话术\n4. **CRM自动同步与更新** - 保持数据一致性\n5. **销售数据分析看板** - 可视化销售表现\n\n支持与企业微信、钉钉、飞书等工具集成。\n\n从贵公司的情况来看，这些功能应该能很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您主要想解决销售流程中的哪些具体痛点呢？我可以为您详细介绍相关功能。",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "产品介绍 核心功能 概述"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "简单介绍一下你们的产品。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_136a517755124d0ca32d646d",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"产品介绍 核心功能 概述\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_136a517755124d0ca32d646d",
+          "content": "{\"success\": true, \"data\": {\"results\": [{\"id\": \"KB001\", \"category\": \"产品功能\", \"title\": \"AI销售助手核心功能\", \"content\": \"AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。\"}], \"count\": 1}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！感谢您的关注。我们的核心产品是 **AI销售助手**，主要提供以下功能：\n\n1. **智能线索评分与分配** - 自动评估线索质量并智能分配\n2. **自动化外呼与邮件跟进** - 减少人工操作，提升效率\n3. **销售话术实时推荐** - 根据场景推荐最佳话术\n4. **CRM自动同步与更新** - 保持数据一致性\n5. **销售数据分析看板** - 可视化销售表现\n\n支持与企业微信、钉钉、飞书等工具集成。\n\n从贵公司的情况来看，这些功能应该能很好地解决您提到的\"销售跟进不及时\"和\"经常漏掉客户\"的问题。\n\n请问您主要想解决销售流程中的哪些具体痛点呢？我可以为您详细介绍相关功能。"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "产品介绍 核心功能 概述"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [
+                {
+                  "id": "KB001",
+                  "category": "产品功能",
+                  "title": "AI销售助手核心功能",
+                  "content": "AI销售助手提供以下核心功能：1）智能线索评分与分配；2）自动化外呼与邮件跟进；3）销售话术实时推荐；4）CRM自动同步与更新；5）销售数据分析看板。支持与企业微信、钉钉、飞书等IM工具集成。"
+                }
+              ],
+              "count": 1
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  },
+  "prompt_v2": {
+    "score": 1.0,
+    "details": [
+      "JSON 稳定性检查通过",
+      "交互轮次: 1",
+      "工具调用序列: search_knowledge_base"
+    ],
+    "duration_ms": 16060.93,
+    "trajectory": {
+      "case_id": "E014",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "简单介绍一下你们的产品。",
+          "agent_message": "您好！感谢关注我们的产品。\n\n我注意到贵公司是华锐制造，规模300人，属于制造业。从之前的沟通中了解到，贵司在销售跟进方面存在一些痛点，比如跟进不及时、容易漏掉客户等。\n\n关于产品介绍，我需要为您查询更详细的信息。请问您主要想了解产品的哪些方面呢？比如：\n\n- 核心功能模块\n- 如何解决销售跟进问题\n- 部署方式\n- 定价方案\n- 客户案例\n\n或者您也可以直接告诉我您最关心的具体问题，这样我能为您提供更有针对性的信息。",
+          "tool_calls": [
+            {
+              "tool_name": "search_knowledge_base",
+              "arguments": {
+                "query": "产品介绍 功能概述"
+              }
+            }
+          ],
+          "state": {
+            "lead_id": "L001",
+            "messages": [
+              {
+                "role": "user",
+                "content": "简单介绍一下你们的产品。"
+              },
+              {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "id": "call_0a538fa7c5134b1db789b3a9",
+                    "type": "function",
+                    "function": {
+                      "name": "search_knowledge_base",
+                      "arguments": "{\"query\": \"产品介绍 功能概述\"}"
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "tool_call_id": "call_0a538fa7c5134b1db789b3a9",
+                "content": "{\"success\": true, \"data\": {\"results\": [], \"message\": \"未找到相关知识，请换用其他关键词或告知客户需要人工确认。\"}, \"error\": null}"
+              },
+              {
+                "role": "assistant",
+                "content": "您好！感谢关注我们的产品。\n\n我注意到贵公司是华锐制造，规模300人，属于制造业。从之前的沟通中了解到，贵司在销售跟进方面存在一些痛点，比如跟进不及时、容易漏掉客户等。\n\n关于产品介绍，我需要为您查询更详细的信息。请问您主要想了解产品的哪些方面呢？比如：\n\n- 核心功能模块\n- 如何解决销售跟进问题\n- 部署方式\n- 定价方案\n- 客户案例\n\n或者您也可以直接告诉我您最关心的具体问题，这样我能为您提供更有针对性的信息。"
+              }
+            ],
+            "qualification_level": "unknown",
+            "missing_info": [],
+            "next_action": "",
+            "risk_flags": [],
+            "tools_called": [
+              {
+                "tool_name": "search_knowledge_base",
+                "arguments": {
+                  "query": "产品介绍 功能概述"
+                },
+                "result": {
+                  "success": true,
+                  "data": {
+                    "results": [],
+                    "message": "未找到相关知识，请换用其他关键词或告知客户需要人工确认。"
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "turn_count": 0
+          }
+        }
+      ],
+      "all_tool_names": [
+        "search_knowledge_base"
+      ]
+    },
+    "final_message": "您好！感谢关注我们的产品。\n\n我注意到贵公司是华锐制造，规模300人，属于制造业。从之前的沟通中了解到，贵司在销售跟进方面存在一些痛点，比如跟进不及时、容易漏掉客户等。\n\n关于产品介绍，我需要为您查询更详细的信息。请问您主要想了解产品的哪些方面呢？比如：\n\n- 核心功能模块\n- 如何解决销售跟进问题\n- 部署方式\n- 定价方案\n- 客户案例\n\n或者您也可以直接告诉我您最关心的具体问题，这样我能为您提供更有针对性的信息。",
+    "final_tool_calls": [
+      {
+        "tool_name": "search_knowledge_base",
+        "arguments": {
+          "query": "产品介绍 功能概述"
+        }
+      }
+    ],
+    "final_state": {
+      "lead_id": "L001",
+      "messages": [
+        {
+          "role": "user",
+          "content": "简单介绍一下你们的产品。"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_0a538fa7c5134b1db789b3a9",
+              "type": "function",
+              "function": {
+                "name": "search_knowledge_base",
+                "arguments": "{\"query\": \"产品介绍 功能概述\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_0a538fa7c5134b1db789b3a9",
+          "content": "{\"success\": true, \"data\": {\"results\": [], \"message\": \"未找到相关知识，请换用其他关键词或告知客户需要人工确认。\"}, \"error\": null}"
+        },
+        {
+          "role": "assistant",
+          "content": "您好！感谢关注我们的产品。\n\n我注意到贵公司是华锐制造，规模300人，属于制造业。从之前的沟通中了解到，贵司在销售跟进方面存在一些痛点，比如跟进不及时、容易漏掉客户等。\n\n关于产品介绍，我需要为您查询更详细的信息。请问您主要想了解产品的哪些方面呢？比如：\n\n- 核心功能模块\n- 如何解决销售跟进问题\n- 部署方式\n- 定价方案\n- 客户案例\n\n或者您也可以直接告诉我您最关心的具体问题，这样我能为您提供更有针对性的信息。"
+        }
+      ],
+      "qualification_level": "unknown",
+      "missing_info": [],
+      "next_action": "",
+      "risk_flags": [],
+      "tools_called": [
+        {
+          "tool_name": "search_knowledge_base",
+          "arguments": {
+            "query": "产品介绍 功能概述"
+          },
+          "result": {
+            "success": true,
+            "data": {
+              "results": [],
+              "message": "未找到相关知识，请换用其他关键词或告知客户需要人工确认。"
+            },
+            "error": null
+          }
+        }
+      ],
+      "turn_count": 0
+    }
+  }
+}
